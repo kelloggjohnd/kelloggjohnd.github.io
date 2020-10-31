@@ -1,7 +1,100 @@
-<!DOCTYPE html>
 <html>
+
+<head><title>DATA 608 - Module 5</title></head>
+
 <body>
-<h1>Data605 - Module 5</h1>
-<p>Attempting to host the Java Script on GitHub Pages.</p>
+    
+<h1>Beginner JavaScript</h1>
+<h3>John Kellogg<br>October 30, 2020</h3>
+
+<!-- functions -->
+<script type="text/Javascript">
+
+<!-- Function 1: Reverse the string entered by the user -->
+
+function reverseString(){
+    var inputString, inReverse, i, reversedString;
+
+    // Get the value of the input field with id="reverseString"
+    inputString = document.getElementById("stringInput").value;
+
+    inReverse = "";
+    // Loop through the string
+    for (i = inputString.length - 1; i >= 0; i--){
+        inReverse += inputString[i];
+    }
+
+    reversedString = inputString + " reversed is " + inReverse;
+
+    //return(reversedString)
+    document.getElementById("reverseOutput").innerHTML = reversedString;
+}
+
+<!-- Function 2: Calculate the first 20 multiples of an input number -->
+
+function calcMultiples(){
+    var inputNumber, multiples, i, multiplesTable;
+
+    // Get the number for the input field with id="numberInput"
+    inputNumber = document.getElementById("numberInput").value;
+
+    multiplesTable = "";
+
+    for (i = 0; i < 20; i++){
+        multiples = (i+1)*inputNumber;
+        switch(i % 4){
+            case (0):
+                multiplesTable += "<tr><td>" + multiples + "</td>";
+                break;
+            case (3):
+                multiplesTable += "<td>" + multiples + "</td></tr>";
+                break;
+            default:
+                multiplesTable += "<td>" + multiples + "</td>";    
+        }
+    }
+
+    //return(multipleTable)
+    document.getElementById("multipleTable").innerHTML = "<table>" + multiplesTable + "</table>";
+}
+
+</script>
+
+<!-- Mathjax CDN -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<!-- User input for section 1 -->
+<h2>Section 1 - Reverse input</h2>
+
+<script type="text/JavaScript">
+
+document.write('<p>Enter a string into the input box</p><br>');
+
+</script>
+
+<form name="reverseStringForm">
+    <input id="stringInput" type="text" size="15">
+    <input type="button" value="Reverse" onClick="reverseString()">
+</form>
+
+<p id="reverseOutput"></p>
+
+
+<br>
+<br>
+
+<!-- User input for section 2 -->
+<h2>Part 2 - Print first 20 Multiples in a table</h2>
+
+<p>Please Enter a Number</p>
+
+<form name="multipleForm">
+    <input id="numberInput" type="number" size="15">
+    <input type="button" value="Multiples" onClick="calcMultiples()">
+</form>
+
+<p id="multipleTable"></p>
+
 </body>
 </html>
